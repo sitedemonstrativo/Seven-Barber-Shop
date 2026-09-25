@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Barber Shop | Estilo e Tradição em Jacarezinho</title>
+    <meta name="description" content="Seven Barber Shop em Jacarezinho - PR. Barbearia Adulto e Infantil desde 2017. Cortes clássicos, degradê, barboterapia e muito mais. Agende pelo WhatsApp.">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configurações do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        darklight: '#111111',
+                        gold: '#D4AF37',
+                        goldhover: '#b8962e',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .img-zoom { overflow: hidden; }
+        .img-zoom img { transition: transform 0.5s ease; }
+        .img-zoom:hover img { transform: scale(1.1); }
+        html { scroll-behavior: smooth; }
+        section { scroll-margin-top: 80px; }
+        
+        /* Estilo para o Grid Masonry da Galeria */
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 1rem;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 768px) {
+            .masonry-grid { column-count: 3; }
+        }
+        
+        /* Scroll horizontal suave para mobile */
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        .scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .scroll-container::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 10px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 10px;
+        }
+        .scroll-item {
+            scroll-snap-align: start;
+            flex: 0 0 auto;
+        }
+    </style>
+</head>
+<body class="bg-dark text-gray-200 font-sans antialiased overflow-x-hidden">
+
+    <!-- ================= HEADER / NAVBAR ================= -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-dark/80 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold tracking-wider text-white flex items-center gap-3">
+                <img src="file_00000000b334820eabc034e0721fa2dc.png" alt="Logo Seven Barber Shop" class="h-10 w-10 rounded-full object-cover border border-gold/50" onerror="this.style.display='none'">
+                SEVEN <span class="text-gold">BARBER</span> SHOP
+            </a>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest">
+                <a href="#inicio" class="hover:text-gold transition">Início</a>
+                <a href="#servicos" class="hover:text-gold transition">Serviços</a>
+                <a href="#galeria" class="hover:text-gold transition">Estilos</a>
+                <a href="#avaliacoes" class="hover:text-gold transition">Avaliações</a>
+                <a href="#contato" class="hover:text-gold transition">Contato</a>
+            </nav>
+
+            <!-- Menu Mobile Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-darklight border-t border-white/10">
+            <div class="flex flex-col px-6 py-4 space-y-4 text-sm font-medium uppercase tracking-widest">
+                <a href="#inicio" class="hover:text-gold transition">Início</a>
+                <a href="#servicos" class="hover:text-gold transition">Serviços</a>
+                <a href="#galeria" class="hover:text-gold transition">Estilos</a>
+                <a href="#avaliacoes" class="hover:text-gold transition">Avaliações</a>
+                <a href="#contato" class="hover:text-gold transition">Contato</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+        <!-- Fundo principal -->
+        <div class="absolute inset-0 z-0">
+            <img src="file_00000000b334820eabc034e0721fa2dc.png" alt="Fundo Seven Barber Shop" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/70"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 fade-in">
+            <img src="file_00000000b334820eabc034e0721fa2dc.png" alt="Logo" class="h-24 w-24 rounded-full object-cover mx-auto mb-6 border-2 border-gold shadow-lg shadow-gold/20" onerror="this.style.display='none'">
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4">
+                Estilo, tradição e atitude<br>
+                <span class="text-gold">em Jacarezinho</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                Sua melhor versão começa aqui. Desde 2017.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://wa.me/5543991740391" target="_blank" class="bg-gold hover:bg-goldhover text-dark font-bold py-4 px-8 rounded-full transition duration-300 text-lg shadow-lg shadow-gold/20 flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp
+                </a>
+                <a href="#galeria" class="bg-transparent border-2 border-white hover:bg-white hover:text-dark text-white font-bold py-4 px-8 rounded-full transition duration-300 text-lg flex items-center justify-center gap-2">
+                    <i class="fas fa-cut"></i> Ver Estilos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SERVIÇOS ================= -->
+    <section id="servicos" class="py-24 bg-darklight relative">
+        <!-- Imagem de fundo para a seção de serviços -->
+        <div class="absolute inset-0 z-0 opacity-20">
+            <img src="IMG-20260924-WA0574.jpg" alt="Fundo Barba Cabelo Estilo" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Nossos <span class="text-gold">Serviços</span></h2>
+                <div class="w-24 h-1 bg-gold mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Serviço 1 -->
+                <div class="bg-dark/80 backdrop-blur-sm p-8 rounded-2xl border border-white/10 text-center fade-in hover:border-gold/50 transition duration-300">
+                    <div class="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-cut text-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Corte Masculino</h3>
+                    <p class="text-gray-400 text-sm">Clássico, degradê, navalhado ou tesoura. Precisão e estilo para o seu dia a dia.</p>
+                </div>
+
+                <!-- Serviço 2 -->
+                <div class="bg-dark/80 backdrop-blur-sm p-8 rounded-2xl border border-white/10 text-center fade-in hover:border-gold/50 transition duration-300">
+                    <div class="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-razor text-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Barba Modelada</h3>
+                    <p class="text-gray-400 text-sm">Design de barba, toalha quente e navalha. Cuidado completo para o seu rosto.</p>
+                </div>
+
+                <!-- Serviço 3 -->
+                <div class="bg-dark/80 backdrop-blur-sm p-8 rounded-2xl border border-white/10 text-center fade-in hover:border-gold/50 transition duration-300">
+                    <div class="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-eye text-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Sobrancelha na Medida</h3>
+                    <p class="text-gray-400 text-sm">Design de sobrancelha masculina, alinhando o olhar e valorizando o rosto.</p>
+                </div>
+
+                <!-- Serviço 4 -->
+                <div class="bg-dark/80 backdrop-blur-sm p-8 rounded-2xl border border-white/10 text-center fade-in hover:border-gold/50 transition duration-300">
+                    <div class="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-crown text-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Estilo e Confiança</h3>
+                    <p class="text-gray-400 text-sm">Mais que um corte, uma experiência. Saia daqui se sentindo o cara.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= GALERIA DE ESTILOS ================= -->
+    <section id="galeria" class="py-24 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Escolha o seu <span class="text-gold">estilo</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Do clássico ao moderno, nós temos o corte perfeito para você. Inspire-se na nossa galeria.</p>
+                <div class="w-24 h-1 bg-gold mx-auto mt-6"></div>
+            </div>
+
+            <!-- Grid Masonry para as imagens de estilo -->
+            <div class="masonry-grid fade-in">
+                <!-- Imagem 1 -->
+                <div class="masonry-item img-zoom rounded-xl overflow-hidden relative group">
+                    <img src="IMG-20260924-WA0567(1).jpg" alt="Estilo de Corte 1" class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <span class="text-white font-bold text-lg">Degradê Clássico</span>
+                    </div>
+                </div>
+                <!-- Imagem 2 -->
+                <div class="masonry-item img-zoom rounded-xl overflow-hidden relative group">
+                    <img src="IMG-20260924-WA0568(1).jpg" alt="Estilo de Corte 2" class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <span class="text-white font-bold text-lg">Social Moderno</span>
+                    </div>
+                </div>
+                <!-- Imagem 3 -->
+                <div class="masonry-item img-zoom rounded-xl overflow-hidden relative group">
+                    <img src="IMG-20260924-WA0569(1).jpg" alt="Estilo de Corte 3" class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <span class="text-white font-bold text-lg">Navalhado</span>
+                    </div>
+                </div>
+                <!-- Imagem 4 -->
+                <div class="masonry-item img-zoom rounded-xl overflow-hidden relative group">
+                    <img src="IMG-20260924-WA0570(1).jpg" alt="Estilo de Corte 4" class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <span class="text-white font-bold text-lg">Texturizado</span>
+                    </div>
+                </div>
+                <!-- Imagem 5 -->
+                <div class="masonry-item img-zoom rounded-xl overflow-hidden relative group">
+                    <img src="IMG-20260924-WA0571(1).jpg" alt="Estilo de Corte 5" class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <span class="text-white font-bold text-lg">Platinado</span>
+                    </div>
+                </div>
+                <!-- Imagem 6 -->
+                <div class="masonry-item img-zoom rounded-xl overflow-hidden relative group">
+                    <img src="IMG-20260924-WA0572(1).jpg" alt="Estilo de Corte 6" class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <span class="text-white font-bold text-lg">Infantil</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CLIENTE FELIZ ================= -->
+    <section class="py-24 relative overflow-hidden">
+        <!-- Imagem de fundo Cliente Feliz -->
+        <div class="absolute inset-0 z-0">
+            <img src="IMG-20260924-WA0575.jpg" alt="Cliente Feliz" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/80"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10 text-center fade-in">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Cliente Feliz,<br><span class="text-gold">Trabalho Bem Feito!</span></h2>
+            <p class="text-gray-300 text-lg max-w-3xl mx-auto mb-10">
+                A sua satisfação é a nossa maior conquista. Na Seven Barber Shop, cada cliente é único e cada corte é uma obra-prima. Venha viver essa experiência.
+            </p>
+            <a href="https://wa.me/5543991740391" target="_blank" class="inline-block bg-gold hover:bg-goldhover text-dark font-bold py-4 px-10 rounded-full transition duration-300 text-lg shadow-lg shadow-gold/20">
+                Quero ser o próximo cliente feliz
+            </a>
+        </div>
+    </section>
+
+    <!-- ================= ESTILOSO DESDE CRIANÇA ================= -->
+    <section class="py-24 bg-darklight">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                
+                <!-- Imagem -->
+                <div class="w-full lg:w-1/2 fade-in">
+                    <div class="img-zoom rounded-2xl overflow-hidden border-4 border-gold/30 shadow-2xl">
+                        <img src="IMG-20260924-WA0583.jpg" alt="Corte Infantil Seven Barber Shop" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+
+                <!-- Texto -->
+                <div class="w-full lg:w-1/2 fade-in">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Estiloso desde <span class="text-gold">criança</span></h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                        Na Seven Barber Shop, atendemos adultos e crianças. Um ambiente acolhedor e profissionais pacientes para cuidar do visual do seu filho com todo o cuidado e atenção que ele merece.
+                    </p>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        Sabemos que cada criança é única, e por isso, oferecemos um atendimento especial para os pequenos, garantindo conforto e um resultado impecável.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="bg-gold/10 p-4 rounded-full">
+                            <i class="fas fa-child text-gold text-2xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-bold text-xl">Barbearia Adulto e Infantil</p>
+                            <p class="text-gray-500 text-sm">Ambiente familiar e acolhedor</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= AVALIAÇÕES ================= -->
+    <section id="avaliacoes" class="py-24 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">O que nossos <span class="text-gold">clientes dizem</span></h2>
+                <div class="flex items-center justify-center gap-2 mt-4">
+                    <span class="text-4xl font-bold text-white">5,0</span>
+                    <div class="text-gold text-xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <span class="text-gray-400">(277 avaliações no Google)</span>
+                </div>
+            </div>
+
+            <!-- Grid de Avaliações -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Avaliação 1 -->
+                <div class="bg-darklight p-6 rounded-xl border border-white/5 fade-in">
+                    <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-4">"Muito bom o atendimento e corte de cabelo"</p>
+                    <p class="text-white font-bold">Francisco Mateus Oliveira Costa</p>
+                </div>
+
+                <!-- Avaliação 2 -->
+                <div class="bg-darklight p-6 rounded-xl border border-white/5 fade-in">
+                    <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-4">"Bom o corte o barbeiro é super gentil super recomendo"</p>
+                    <p class="text-white font-bold">Kayque Oliveira</p>
+                </div>
+
+                <!-- Avaliação 3 -->
+                <div class="bg-darklight p-6 rounded-xl border border-white/5 fade-in">
+                    <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-4">"Primeiramente só quero parabenizar o..."</p>
+                    <p class="text-white font-bold">Jose Fabio Vieira Gomes</p>
+                </div>
+
+                <!-- Avaliação 4 -->
+                <div class="bg-darklight p-6 rounded-xl border border-white/5 fade-in">
+                    <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-4">"Ótimo atendimento, ambiente bem organizado e produtos de qualidade. Recomendo!!"</p>
+                    <p class="text-white font-bold">Luiz Gustavo Augusto</p>
+                </div>
+
+                <!-- Avaliação 5 -->
+                <div class="bg-darklight p-6 rounded-xl border border-white/5 fade-in">
+                    <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-4">"Ótimo atendimento, local arejado e sem contar no ótimo trabalho, meu esposo corta faz uns 07/08 anos já rsrs, sucesso sempre André Deus abençoe"</p>
+                    <p class="text-white font-bold">Carolaine Tenório</p>
+                </div>
+
+                <!-- Avaliação 6 -->
+                <div class="bg-darklight p-6 rounded-xl border border-white/5 fade-in">
+                    <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-4">"Super recomendo! Carlos André muito paciente e atencioso! Meu filho saiu de lá com um corte bem feito!"</p>
+                    <p class="text-white font-bold">Ariane Oliveira</p>
+                </div>
+
+                <!-- Avaliação 7 -->
+                <div class="bg-darklight p-6 rounded-xl border border-white/5 fade-in">
+                    <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-4">"Profissional educado, trata bem, local acolhedor para criança atípica e típica, excelente corte de cabelo, ótimo atendimento."</p>
+                    <p class="text-white font-bold">Bianca Aparecida</p>
+                </div>
+
+                <!-- Avaliação 8 -->
+                <div class="bg-darklight p-6 rounded-xl border border-white/5 fade-in">
+                    <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-4">"Corte infantil top demais"</p>
+                    <p class="text-white font-bold">Apela Pinguim</p>
+                </div>
+
+                <!-- Avaliação 9 -->
+                <div class="bg-darklight p-6 rounded-xl border border-white/5 fade-in">
+                    <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-4">"Muito bom o atendimento super aconselho vocês vir aqui cortar com nosso amigo, corte 100% profissional arrumou até minha calvície kkkk"</p>
+                    <p class="text-white font-bold">Victor Hugo Milanesi</p>
+                </div>
+
+                <!-- Avaliação 10 -->
+                <div class="bg-darklight p-6 rounded-xl border border-white/5 fade-in">
+                    <div class="flex text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 italic mb-4">"Excelente atendimento! O André é um profissional atualizado, que faz um ótimo trabalho e possui um espaço muito agradável para atendimento aos clientes."</p>
+                    <p class="text-white font-bold">Júlio César S. Madeira</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER / CONTATO ================= -->
+    <footer id="contato" class="bg-darklight pt-20 pb-10 border-t border-white/10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                
+                <!-- Coluna 1: Informações -->
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold text-white mb-6">SEVEN <span class="text-gold">BARBER</span> SHOP</h3>
+                    <p class="text-gray-400 mb-6">Estilo, tradição e atitude em Jacarezinho. Barbearia Adulto e Infantil desde 2017.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/sevenbarbershop_7?stkn=bjE0eWFrYWtheDZ0" target="_blank" class="bg-white/10 hover:bg-gold hover:text-dark text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/5543991740391" target="_blank" class="bg-white/10 hover:bg-gold hover:text-dark text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Contato -->
+                <div class="fade-in">
+                    <h4 class="text-xl font-bold text-white mb-6">Contato</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-gold mt-1"></i>
+                            <span>R. José Pavan, 629,<br>Jacarezinho - PR,<br>86400-000</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone-alt text-gold"></i>
+                            <a href="tel:+5543991740391" class="hover:text-white transition">(43) 99174-0391</a>
+                        </li>
+                    </ul>
+                    <div class="mt-6">
+                        <a href="https://wa.me/5543991740391" target="_blank" class="inline-block bg-gold hover:bg-goldhover text-dark font-bold py-3 px-6 rounded-full transition duration-300">
+                            Agendar pelo WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna 3: Mapa -->
+                <div class="fade-in h-64 md:h-full rounded-xl overflow-hidden border border-white/10">
+                    <!-- Iframe do Google Maps - Endereço: R. José Pavan, 629, Jacarezinho - PR -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.123456789!2d-50.0000000!3d-23.1600000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDA5JzM2LjAiUyA1MMKwMDAnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+            </div>
+
+            <!-- Direitos Autorais -->
+            <div class="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2026 Seven Barber Shop. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= BOTÃO FLUTUANTE WHATSAPP ================= -->
+    <a href="https://wa.me/5543991740391" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg shadow-green-500/30 transition transform hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ================= BOTÃO VOLTAR AO TOPO ================= -->
+    <button id="back-to-top" class="fixed bottom-24 right-6 z-50 bg-gold hover:bg-goldhover text-dark w-12 h-12 rounded-full flex items-center justify-center text-xl shadow-lg transition opacity-0 pointer-events-none">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Menu Mobile
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Fechar menu mobile ao clicar em um link
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // 2. Animação Fade-in com Intersection Observer
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const appearOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                });
+            }, appearOptions);
+
+            fadeElements.forEach(el => {
+                appearOnScroll.observe(el);
+            });
+
+            // 3. Botão Voltar ao Topo
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // 4. Efeito de Scroll Suave para Links Internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</body>
+</html>
